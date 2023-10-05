@@ -1,0 +1,22 @@
+<%= turbo_frame_tag(dom_id(@post, :comments), data: {controller: "refresh"}) do %>
+  <button>Refresh this turbo stream</button>
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Comments</h1>
+
+<div id="comments">
+  <% if @comments.blank? %>
+    <p>Empty State</p>
+<% end %>
+  <% @comments.each do |comment| %>
+    <%= render comment %>
+    <p>
+      <%= link_to "Show this comment", comment %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New comment", new_comment_path %>
+
+<% end %>

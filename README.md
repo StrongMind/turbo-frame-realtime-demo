@@ -1,6 +1,6 @@
-# Example README
+# README
 
-This is an example of what we expect in a README.
+Shows how to use turbo-frames using the `src` attribute and refresh using a realtime channel
 
 ## What?
 
@@ -9,55 +9,24 @@ Delivery of Learnosity assessments to students and reporting student results to 
 
 ### Diagram
 
-A diagram showing all of the following:
-
-* project inputs
-* projects end users
-* project outputs
-* project data stores
-
-([see mermaid documentation on how to create these diagrams](https://mermaid-js.github.io/mermaid/#/./flowchart?id=flowcharts-basic-syntax))
-
-For example:
-
-```mermaid
-graph LR
-    subgraph project_components[Hypothetical Service]
-
-        project_api[Hypothetical Service API]
-        project_frontend[Hypothetical Service Frontend]
-        subgraph datastores[Data Stores]
-        postgres[PostgreSQL]
-            queue[SQS queue service]
-        end
-    end
-
-    subgraph inputs[Inputs]
-        event_platform_input[Event Platform]
-            cloud_canvas[Cloud Canvas API]
-            identity[Identity Server]
-    end
-
-
-    subgraph end_users[End Users]
-        student[Student]
-            administrator[Administrator]
-    end
-
-    subgraph outputs[Outputs]
-        event_platform_out[Event Platform]
-    end
-
-    event_platform_input -->|Canvas Change Events| project_api
-    cloud_canvas -->|Canvas User API get| project_api
-    identity -->|Authentication of users| project_frontend
-
-    project_frontend -->|Views a thing| student
-    administrator -->|Creates things| project_frontend
-
-    project_api -->|Sends create and view messages| event_platform_out
-
+You'll need
+- Redis
+- MySQL
+- 
+```bash
+bin/setup
+rails db:create
+rails db:migrate
+rails db:seed
 ```
+
+http://localhost:3000/posts/1
+
+```bash
+rake comments:create
+rake comments:clear
+```
+
 
 ## Where?
 
