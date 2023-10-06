@@ -10,6 +10,19 @@ class PostsController < ApplicationController
   def show
   end
 
+  # GET /alternate/1
+  def alternate
+    @post = Post.find(params[:id])
+    render :alternate
+  end
+
+  def alternate_comments
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    render :alternate_comments
+  end
+
+
   # GET /posts/new
   def new
     @post = Post.new

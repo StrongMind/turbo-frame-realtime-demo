@@ -11,4 +11,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "posts#index"
+
+  # Defines the alternate path route ("/alternate/1")
+  get "alternate/:id" => "posts#alternate", as: :alternate
+  get "alternate/:id/comments" => "posts#alternate_comments", as: :alternate_comments
+
 end
